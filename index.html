@@ -837,69 +837,6 @@ h2 {
 }
 #toast.show { transform: translateX(-50%) translateY(0); }
 
-/* ─── KAMA POPUP ─────────────────────────────────────────── */
-#kama-overlay {
-  position: fixed; inset: 0; z-index: 450;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(6px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-#kama-overlay.show { opacity: 1; pointer-events: all; }
-#kama-card {
-  background: linear-gradient(160deg, #100007 0%, #280a16 60%, #0e0414 100%);
-  border: 1px solid rgba(200,116,110,0.25);
-  border-radius: 28px;
-  padding: 24px 22px 20px;
-  width: min(300px, 84vw);
-  text-align: center;
-  box-shadow: 0 0 60px rgba(200,80,80,0.12), 0 8px 32px rgba(0,0,0,0.5);
-}
-.kama-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.62rem; letter-spacing: 0.22em;
-  color: rgba(212,170,122,0.55);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-#kama-art {
-  margin: 0 auto 8px;
-  width: 176px; height: 184px;
-  display: flex; align-items: center; justify-content: center;
-}
-#kama-art svg {
-  width: 100%; height: 100%;
-  filter: drop-shadow(0 0 10px rgba(200,116,110,0.22));
-}
-.kama-title-text {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.1rem;
-  color: #e8cfc8;
-  margin: 2px 0 1px;
-}
-.kama-sub-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.7rem;
-  color: rgba(212,170,122,0.5);
-  letter-spacing: 0.14em;
-  margin-bottom: 12px;
-}
-.kama-dots {
-  display: flex; gap: 6px; justify-content: center; margin-bottom: 14px;
-}
-.kama-dots span {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: rgba(200,116,110,0.25);
-  transition: background 0.35s;
-}
-.kama-dots span.active { background: #c8746e; }
-.kama-hint {
-  font-size: 0.58rem; letter-spacing: 0.16em;
-  color: rgba(255,255,255,0.2);
-  text-transform: uppercase; margin: 0;
-}
 
 /* ─── POSITIONS TOGGLE (start screen) ───────────────────── */
 .positions-toggle {
@@ -1612,32 +1549,6 @@ const POSITIONS_DECK = [
   { name: 'The Summit',    desc: 'fully intertwined at the peak — nothing held back, everything shared.' },
 ];
 
-const KAMA_POSES = [
-  { title: 'The Lotus', sub: 'Face to Face',
-    svg: `<svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg"><g fill="#c8746e"><ellipse cx="58" cy="28" rx="12" ry="14"/><ellipse cx="58" cy="46" rx="5" ry="7"/><ellipse cx="58" cy="82" rx="19" ry="28"/><ellipse cx="72" cy="118" rx="8" ry="24" transform="rotate(-52 72 118)"/><ellipse cx="46" cy="122" rx="8" ry="22" transform="rotate(42 46 122)"/><ellipse cx="82" cy="72" rx="7" ry="20" transform="rotate(-65 82 72)"/><ellipse cx="40" cy="76" rx="6" ry="16" transform="rotate(28 40 76)"/></g><g fill="#d4aa7a"><ellipse cx="142" cy="28" rx="12" ry="14"/><ellipse cx="142" cy="46" rx="5" ry="7"/><ellipse cx="142" cy="82" rx="19" ry="28"/><ellipse cx="128" cy="118" rx="8" ry="24" transform="rotate(52 128 118)"/><ellipse cx="154" cy="122" rx="8" ry="22" transform="rotate(-42 154 122)"/><ellipse cx="118" cy="72" rx="7" ry="20" transform="rotate(65 118 72)"/><ellipse cx="160" cy="76" rx="6" ry="16" transform="rotate(-28 160 76)"/></g><ellipse cx="100" cy="78" rx="9" ry="6" fill="#b88070"/></svg>`
-  },
-  { title: 'The Embrace', sub: 'One Behind',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#c8746e" opacity="0.85"><ellipse cx="90" cy="24" rx="13" ry="15"/><ellipse cx="90" cy="43" rx="5" ry="7"/><ellipse cx="90" cy="88" rx="20" ry="34"/><ellipse cx="126" cy="86" rx="7" ry="28" transform="rotate(-76 126 86)"/><ellipse cx="62" cy="86" rx="7" ry="28" transform="rotate(76 62 86)"/><ellipse cx="82" cy="145" rx="11" ry="30" transform="rotate(-5 82 145)"/><ellipse cx="80" cy="188" rx="9" ry="26" transform="rotate(3 80 188)"/><ellipse cx="100" cy="145" rx="11" ry="30" transform="rotate(5 100 145)"/><ellipse cx="102" cy="188" rx="9" ry="26" transform="rotate(-3 102 188)"/></g><g fill="#d4aa7a"><ellipse cx="112" cy="30" rx="12" ry="14"/><ellipse cx="112" cy="48" rx="5" ry="7"/><ellipse cx="108" cy="88" rx="17" ry="31"/><ellipse cx="92" cy="80" rx="6" ry="21" transform="rotate(8 92 80)"/><ellipse cx="126" cy="80" rx="6" ry="21" transform="rotate(-8 126 80)"/><ellipse cx="100" cy="145" rx="10" ry="28" transform="rotate(-3 100 145)"/><ellipse cx="98" cy="185" rx="8" ry="25" transform="rotate(2 98 185)"/><ellipse cx="118" cy="145" rx="10" ry="28" transform="rotate(3 118 145)"/><ellipse cx="120" cy="185" rx="8" ry="25" transform="rotate(-2 120 185)"/></g></svg>`
-  },
-  { title: 'The Spoon', sub: 'Entwined in Rest',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0,18)"><g fill="#c8746e" opacity="0.88"><ellipse cx="30" cy="115" rx="15" ry="13"/><ellipse cx="108" cy="122" rx="68" ry="22"/><ellipse cx="82" cy="100" rx="48" ry="8" transform="rotate(-6 82 100)"/><ellipse cx="170" cy="134" rx="16" ry="12" transform="rotate(25 170 134)"/></g><g fill="#d4aa7a"><ellipse cx="36" cy="97" rx="13" ry="11"/><ellipse cx="106" cy="104" rx="54" ry="18"/><ellipse cx="55" cy="86" rx="22" ry="7" transform="rotate(14 55 86)"/><ellipse cx="160" cy="115" rx="14" ry="10" transform="rotate(20 160 115)"/></g></g></svg>`
-  },
-  { title: 'The Ascent', sub: 'Rising Together',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#d4aa7a" opacity="0.9"><ellipse cx="46" cy="188" rx="14" ry="12"/><ellipse cx="112" cy="196" rx="62" ry="22"/><ellipse cx="82" cy="168" rx="8" ry="30" transform="rotate(-25 82 168)"/><ellipse cx="136" cy="170" rx="8" ry="26" transform="rotate(20 136 170)"/></g><g fill="#c8746e"><ellipse cx="100" cy="22" rx="12" ry="14"/><ellipse cx="100" cy="40" rx="5" ry="7"/><ellipse cx="100" cy="82" rx="19" ry="34"/><ellipse cx="80" cy="112" rx="7" ry="25" transform="rotate(18 80 112)"/><ellipse cx="120" cy="112" rx="7" ry="25" transform="rotate(-18 120 112)"/><ellipse cx="88" cy="150" rx="11" ry="28" transform="rotate(-8 88 150)"/><ellipse cx="112" cy="150" rx="11" ry="28" transform="rotate(8 112 150)"/></g></svg>`
-  },
-  { title: 'The Cradle', sub: 'Held Close',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#d4aa7a" opacity="0.88"><ellipse cx="100" cy="25" rx="13" ry="15"/><ellipse cx="100" cy="43" rx="5" ry="7"/><ellipse cx="100" cy="82" rx="19" ry="30"/><ellipse cx="72" cy="100" rx="7" ry="26" transform="rotate(72 72 100)"/><ellipse cx="128" cy="100" rx="7" ry="26" transform="rotate(-72 128 100)"/><ellipse cx="70" cy="162" rx="28" ry="12" transform="rotate(-8 70 162)"/><ellipse cx="130" cy="162" rx="28" ry="12" transform="rotate(8 130 162)"/><ellipse cx="48" cy="185" rx="14" ry="10" transform="rotate(-15 48 185)"/><ellipse cx="152" cy="185" rx="14" ry="10" transform="rotate(15 152 185)"/></g><g fill="#c8746e"><ellipse cx="100" cy="98" rx="11" ry="13"/><ellipse cx="100" cy="115" rx="4" ry="6"/><ellipse cx="100" cy="148" rx="16" ry="22"/><ellipse cx="84" cy="135" rx="6" ry="16" transform="rotate(22 84 135)"/><ellipse cx="116" cy="135" rx="6" ry="16" transform="rotate(-22 116 135)"/></g></svg>`
-  },
-  { title: 'The Arch', sub: 'The Surrender',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#d4aa7a" opacity="0.88"><ellipse cx="78" cy="35" rx="12" ry="14"/><ellipse cx="78" cy="53" rx="5" ry="7"/><ellipse cx="80" cy="95" rx="18" ry="32"/><ellipse cx="108" cy="96" rx="7" ry="28" transform="rotate(-68 108 96)"/><ellipse cx="114" cy="114" rx="7" ry="26" transform="rotate(-65 114 114)"/><ellipse cx="62" cy="155" rx="14" ry="22" transform="rotate(15 62 155)"/><ellipse cx="58" cy="186" rx="22" ry="10"/><ellipse cx="95" cy="155" rx="14" ry="22" transform="rotate(-8 95 155)"/><ellipse cx="100" cy="188" rx="22" ry="10"/></g><g fill="#c8746e"><ellipse cx="85" cy="162" rx="20" ry="14"/><ellipse cx="114" cy="120" rx="16" ry="40" transform="rotate(-55 114 120)"/><ellipse cx="60" cy="156" rx="22" ry="9"/><ellipse cx="150" cy="105" rx="13" ry="14" transform="rotate(-25 150 105)"/></g></svg>`
-  },
-  { title: 'The Entwine', sub: 'Woven Together',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#c8746e" opacity="0.88"><ellipse cx="65" cy="28" rx="12" ry="14"/><ellipse cx="68" cy="47" rx="5" ry="7"/><ellipse cx="80" cy="92" rx="18" ry="36" transform="rotate(14 80 92)"/><ellipse cx="106" cy="65" rx="7" ry="25" transform="rotate(-60 106 65)"/><ellipse cx="54" cy="70" rx="6" ry="18" transform="rotate(30 54 70)"/><ellipse cx="95" cy="152" rx="10" ry="28" transform="rotate(18 95 152)"/><ellipse cx="106" cy="194" rx="8" ry="24" transform="rotate(12 106 194)"/><ellipse cx="72" cy="154" rx="10" ry="28" transform="rotate(10 72 154)"/><ellipse cx="76" cy="196" rx="8" ry="23" transform="rotate(6 76 196)"/></g><g fill="#d4aa7a"><ellipse cx="135" cy="28" rx="12" ry="14"/><ellipse cx="132" cy="47" rx="5" ry="7"/><ellipse cx="120" cy="92" rx="18" ry="36" transform="rotate(-14 120 92)"/><ellipse cx="94" cy="65" rx="7" ry="25" transform="rotate(60 94 65)"/><ellipse cx="146" cy="70" rx="6" ry="18" transform="rotate(-30 146 70)"/><ellipse cx="105" cy="152" rx="10" ry="28" transform="rotate(-18 105 152)"/><ellipse cx="94" cy="194" rx="8" ry="24" transform="rotate(-12 94 194)"/><ellipse cx="128" cy="154" rx="10" ry="28" transform="rotate(-10 128 154)"/><ellipse cx="124" cy="196" rx="8" ry="23" transform="rotate(-6 124 196)"/></g></svg>`
-  },
-  { title: 'The Bloom', sub: 'Full Opening',
-    svg: `<svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg"><g fill="#d4aa7a" opacity="0.88"><ellipse cx="40" cy="195" rx="14" ry="12"/><ellipse cx="112" cy="202" rx="65" ry="21"/><ellipse cx="80" cy="178" rx="8" ry="28" transform="rotate(-30 80 178)"/><ellipse cx="138" cy="178" rx="8" ry="28" transform="rotate(30 138 178)"/></g><g fill="#c8746e"><ellipse cx="100" cy="25" rx="12" ry="14"/><ellipse cx="100" cy="43" rx="5" ry="7"/><ellipse cx="100" cy="85" rx="18" ry="32"/><ellipse cx="80" cy="112" rx="6" ry="24" transform="rotate(15 80 112)"/><ellipse cx="120" cy="112" rx="6" ry="24" transform="rotate(-15 120 112)"/><ellipse cx="88" cy="152" rx="10" ry="28" transform="rotate(-10 88 152)"/><ellipse cx="112" cy="152" rx="10" ry="28" transform="rotate(10 112 152)"/></g></svg>`
-  },
-];
 
 let DECK = { truth: [], dare: [] };
 // intimate and positions draw directly from their source arrays via dedicated getters
@@ -2118,11 +2029,9 @@ function doDone() {
   saveState();
 
   if (isTruth) {
-    showReaction(listenerName, () => {
-      showKamaPopup(() => { resetCard(); updateTurnUI(); if (navigator.vibrate) navigator.vibrate(20); });
-    });
+    showReaction(listenerName, () => { resetCard(); updateTurnUI(); if (navigator.vibrate) navigator.vibrate(20); });
   } else {
-    showKamaPopup(() => { resetCard(); updateTurnUI(); if (navigator.vibrate) navigator.vibrate(20); });
+    resetCard(); updateTurnUI(); if (navigator.vibrate) navigator.vibrate(20);
   }
 }
 
@@ -2751,43 +2660,6 @@ function cancelPositionsConsent() {
   document.getElementById('consent-modal').classList.remove('show');
 }
 
-/* ═══════════════════════════════════════════════════════════
-   KAMA POPUP — intimate pose gallery between turns
-═══════════════════════════════════════════════════════════ */
-let _kamaTimer    = null;
-let _kamaIdx      = 0;
-let _kamaCallback = null;
-
-function showKamaPopup(onDone) {
-  _kamaCallback = onDone;
-  _kamaIdx = Math.floor(Math.random() * KAMA_POSES.length);
-  renderKamaPose();
-  document.getElementById('kama-overlay').classList.add('show');
-  _kamaTimer = setInterval(nextKamaPose, 10000);
-}
-
-function nextKamaPose() {
-  _kamaIdx = (_kamaIdx + 1) % KAMA_POSES.length;
-  renderKamaPose();
-}
-
-function renderKamaPose() {
-  const p = KAMA_POSES[_kamaIdx];
-  document.getElementById('kama-art').innerHTML = p.svg;
-  document.getElementById('kama-title-text').textContent = p.title;
-  document.getElementById('kama-sub-text').textContent   = p.sub;
-  const d = document.getElementById('kama-dots');
-  d.innerHTML = KAMA_POSES.map((_,i) =>
-    '<span' + (i === _kamaIdx ? ' class="active"' : '') + '></span>'
-  ).join('');
-}
-
-function dismissKamaPopup() {
-  clearInterval(_kamaTimer); _kamaTimer = null;
-  document.getElementById('kama-overlay').classList.remove('show');
-  const cb = _kamaCallback; _kamaCallback = null;
-  if (cb) setTimeout(cb, 420);
-}
 </script>
 
 <!-- ── CONSENT MODAL ── -->
@@ -2803,16 +2675,5 @@ function dismissKamaPopup() {
   </div>
 </div>
 
-<!-- ── KAMA POPUP ── -->
-<div id="kama-overlay" onclick="if(event.target===this)dismissKamaPopup()">
-  <div id="kama-card">
-    <div class="kama-label">✦ Intimacy ✦</div>
-    <div id="kama-art"></div>
-    <div class="kama-title-text" id="kama-title-text"></div>
-    <div class="kama-sub-text" id="kama-sub-text"></div>
-    <div class="kama-dots" id="kama-dots"></div>
-    <p class="kama-hint">tap outside to continue</p>
-  </div>
-</div>
 </body>
 </html>
