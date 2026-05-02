@@ -900,6 +900,145 @@ h2 {
   color: rgba(255,255,255,0.2);
   text-transform: uppercase; margin: 0;
 }
+
+/* ─── POSITIONS TOGGLE (start screen) ───────────────────── */
+.positions-toggle {
+  display: flex; align-items: center;
+  width: 100%; max-width: 320px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  margin: 0 0 16px;
+  box-sizing: border-box;
+}
+.toggle-info { flex: 1; min-width: 0; }
+.toggle-label {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem; color: var(--text);
+  margin-bottom: 2px;
+}
+.toggle-note {
+  display: block;
+  font-size: 0.65rem; color: var(--muted);
+  line-height: 1.4;
+}
+.toggle-btn {
+  width: 44px; height: 26px; flex-shrink: 0;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  cursor: pointer; position: relative;
+  transition: background 0.3s, border-color 0.3s;
+  margin-left: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+.toggle-btn.on {
+  background: linear-gradient(135deg, #8a2060, #c8748a);
+  border-color: rgba(200,116,138,0.5);
+}
+.toggle-knob {
+  position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; transition: transform 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.toggle-btn.on .toggle-knob { transform: translateX(18px); }
+
+/* ─── CONSENT MODAL ─────────────────────────────────────── */
+#consent-modal {
+  position: fixed; inset: 0; z-index: 600;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+#consent-modal.show { opacity: 1; pointer-events: all; }
+#consent-sheet {
+  background: linear-gradient(160deg, #120008 0%, #2a0a18 100%);
+  border: 1px solid rgba(200,116,138,0.3);
+  border-radius: 24px;
+  padding: 32px 28px 28px;
+  width: min(300px, 88vw);
+  text-align: center;
+}
+.consent-ornament { font-size: 1.1rem; color: var(--gold); margin-bottom: 12px; }
+.consent-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; color: var(--text); margin-bottom: 8px;
+}
+.consent-sub { font-size: 0.76rem; color: var(--muted); margin-bottom: 22px; line-height: 1.5; }
+.consent-btns { display: flex; flex-direction: column; gap: 10px; }
+
+/* ─── INTIMATE CARD ─────────────────────────────────────── */
+.card-back.intimate {
+  background: linear-gradient(140deg, #1a0820 0%, #3d0a28 100%);
+  border: 1px solid rgba(160,60,120,0.5);
+  animation: intimatePulse 2.8s ease-in-out infinite;
+}
+.card-back.intimate .card-type-label { color: #c87aaa; }
+@keyframes intimatePulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(160,60,120,0.2); }
+  50%       { box-shadow: 0 0 32px rgba(160,60,120,0.55); }
+}
+
+/* ─── POSITIONS CARD ────────────────────────────────────── */
+.card-back.positions {
+  background: linear-gradient(140deg, #120208 0%, #340812 100%);
+  border: 1px solid rgba(212,170,80,0.45);
+  box-shadow: 0 0 20px rgba(212,170,80,0.08);
+}
+.card-back.positions .card-type-label { color: var(--gold); letter-spacing: 0.22em; }
+.pos-name {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 1.12rem;
+  color: var(--gold); margin-bottom: 7px; letter-spacing: 0.04em;
+}
+.pos-desc {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem; font-style: italic;
+  color: rgba(255,255,255,0.65); line-height: 1.55;
+}
+
+/* ─── INTIMATE + POSITIONS CHOICE BUTTONS ───────────────── */
+.choice-sub-row { display: flex; gap: 10px; width: 100%; margin-top: 8px; }
+#btn-intimate {
+  flex: 1; padding: 14px 10px; border: none; border-radius: 16px;
+  font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3d0a28, #8a2060);
+  color: #f0d0e0;
+  box-shadow: 0 4px 20px rgba(160,60,120,0.28);
+  transition: transform 0.13s; -webkit-tap-highlight-color: transparent;
+}
+#btn-intimate:active { transform: scale(0.94); }
+#btn-positions {
+  flex: 1; padding: 14px 10px;
+  border: 1px solid rgba(212,170,80,0.3); border-radius: 16px;
+  font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #340812, #6a1428);
+  color: var(--gold);
+  box-shadow: 0 4px 20px rgba(120,20,40,0.25);
+  transition: transform 0.13s; -webkit-tap-highlight-color: transparent;
+}
+#btn-positions:active { transform: scale(0.94); }
+
+/* ─── FREE SKIP BUTTON ──────────────────────────────────── */
+#btn-free-skip {
+  flex: 1; padding: 13px 10px;
+  border: 1px solid rgba(212,170,80,0.28); border-radius: 16px;
+  background: rgba(212,170,80,0.06); color: var(--gold);
+  font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.13s;
+  -webkit-tap-highlight-color: transparent;
+}
+#btn-free-skip:active { transform: scale(0.95); }
 </style>
 </head>
 <body>
@@ -964,6 +1103,17 @@ h2 {
   </div>
 
   <div class="divider" style="margin:20px 0 16px"></div>
+
+  <div class="positions-toggle">
+    <div class="toggle-info">
+      <span class="toggle-label">Enable Positions deck</span>
+      <span class="toggle-note">adds 30 intimate positions to the scorching tier — both players should agree before enabling</span>
+    </div>
+    <button class="toggle-btn" id="btn-positions-toggle"
+            onclick="togglePositionsEnabled()" aria-pressed="false">
+      <span class="toggle-knob"></span>
+    </button>
+  </div>
 
   <button class="btn btn-gold" onclick="goPersonalize()" style="margin-bottom:10px">
     Begin the Night
@@ -1059,11 +1209,16 @@ h2 {
       <button class="choice-btn" id="btn-truth" onclick="choosePrompt('truth')">Truth</button>
       <button class="choice-btn" id="btn-dare"  onclick="choosePrompt('dare')">Dare</button>
     </div>
+    <div class="choice-sub-row" id="choice-sub-row" style="display:none">
+      <button class="choice-btn" id="btn-intimate"  onclick="doIntimate()">Intimate</button>
+      <button class="choice-btn" id="btn-positions" onclick="doPositions()">Positions</button>
+    </div>
     <div class="action-row" id="action-row">
       <button id="btn-done" onclick="doDone()">Done ✓</button>
       <div class="action-sub-row">
-        <button id="btn-skip"    onclick="doSkip()">Skip</button>
-        <button id="btn-forfeit" onclick="doForfeit()">Forfeit</button>
+        <button id="btn-skip"      onclick="doSkip()">Skip</button>
+        <button id="btn-free-skip" onclick="doFreeSkip()" style="display:none">Skip freely</button>
+        <button id="btn-forfeit"   onclick="doForfeit()">Forfeit</button>
       </div>
     </div>
   </div>
@@ -1184,6 +1339,7 @@ let G = {
   p1: 'Raphael', p2: 'Pearl',
   heat: 'spicy',
   memory: '', place: '', petname: '',
+  positionsEnabled: false,
 };
 
 /* ═══════════════════════════════════════════════════════════
@@ -1207,6 +1363,7 @@ function freshState() {
     bonusUnlocked: false,  bonusUsed: false,
     customTruths: [], customDares: [],
     forfeitsUsed: [], reactionsUsed: [],
+    intimatesUsed: [], positionsUsed: [],
   };
 }
 
@@ -1404,6 +1561,57 @@ const REACTION_DECK = [
   "Stay perfectly still and let the silence sit between you.",
 ];
 
+const INTIMATE_DECK = [
+  "Take the lead for the next ten minutes — I'll follow.",
+  'Slow everything down by half. Make me wait.',
+  "Show me, don't tell me.",
+  "Start somewhere you don't usually start.",
+  'Put my hands exactly where you want them.',
+  'Change the angle. Surprise me.',
+  "Tell me what to do next — I'll do whatever you say.",
+  "Make me close my eyes and don't let me open them.",
+  'Find a new rhythm and stay there.',
+  "Don't let me touch you for the next two minutes.",
+  'Lead with your mouth, not your hands.',
+  'Keep eye contact the entire time.',
+  'Take control of my hands.',
+  'Make me ask for it.',
+  'Stay completely silent — let everything else speak.',
+];
+
+const POSITIONS_DECK = [
+  { name: 'The Lotus',     desc: 'face to face, wrapped around each other, nowhere else to look but each other\'s eyes.' },
+  { name: 'The Ember',     desc: 'slow and unhurried, pressed together from chest to hip, the whole world shrinking to this.' },
+  { name: 'The Tide',      desc: 'one behind, one ahead, moving like water, breath falling into sync.' },
+  { name: 'The Altar',     desc: 'one held, one giving — something tender in the weight of it.' },
+  { name: 'The Cradle',    desc: 'one cradled in the other\'s lap, moving together in the smallest possible space.' },
+  { name: 'The Vine',      desc: 'legs entwined, pulling closer than close, unable to say where one ends and the other begins.' },
+  { name: 'The Mirror',    desc: 'facing each other, forehead to forehead, watching every reaction unfold.' },
+  { name: 'The Anchor',    desc: 'one grounded and still, the other free to move, held only by the hands.' },
+  { name: 'The Cascade',   desc: 'one above, one below — gravity doing half the work, connection doing the rest.' },
+  { name: 'The Thread',    desc: 'standing, turned inward, as if pulled together by something invisible and inevitable.' },
+  { name: 'The Bow',       desc: 'one arched open, the other there to receive every moment of it.' },
+  { name: 'The Shore',     desc: 'one lying at rest, the other leaning close — slow, unhurried, present.' },
+  { name: 'The Lock',      desc: 'neither moving, just held there, suspended in the feeling between you.' },
+  { name: 'The Deep',      desc: 'face down and face up — the deepest possible closeness, the quietest possible moment.' },
+  { name: 'The Wing',      desc: 'one over the other, arms wide, completely surrounded and completely safe.' },
+  { name: 'The Pulse',     desc: 'sitting together, face to face, moving only as much as the moment needs.' },
+  { name: 'The Knot',      desc: 'both facing the same way, impossibly close, every movement felt twice.' },
+  { name: 'The Swell',     desc: 'one reclining, the other slowly arriving — like the first wave of something overwhelming.' },
+  { name: 'The Crossing',  desc: 'legs and arms interleaved, every part of both bodies in contact at once.' },
+  { name: 'The Rise',      desc: 'one seated, one riding the rhythm above — eye contact unbroken.' },
+  { name: 'The Reach',     desc: 'one stretched long and still, the other close overhead, in no particular hurry.' },
+  { name: 'The Fold',      desc: 'both curled into each other, compact and complete, the world outside irrelevant.' },
+  { name: 'The Hollow',    desc: 'one nestled perfectly into the curve of the other, breathing together.' },
+  { name: 'The Pillar',    desc: 'one against the wall, the other pressed flush against them — no space between.' },
+  { name: 'The Turn',      desc: 'one facing away, one close behind — warmth pressed into warmth.' },
+  { name: 'The Unwind',    desc: 'slow and deliberate, each movement taking twice as long as it needs to.' },
+  { name: 'The Suspend',   desc: 'just above, not quite touching yet — letting the anticipation build until it breaks.' },
+  { name: 'The Root',      desc: 'one seated deep in the other\'s lap, face to face, hands placed over each other\'s hearts.' },
+  { name: 'The Drift',     desc: 'side by side, moving as if half-asleep — no urgency, just warmth and weight.' },
+  { name: 'The Summit',    desc: 'fully intertwined at the peak — nothing held back, everything shared.' },
+];
+
 const KAMA_POSES = [
   { title: 'The Lotus', sub: 'Face to Face',
     svg: `<svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg"><g fill="#c8746e"><ellipse cx="58" cy="28" rx="12" ry="14"/><ellipse cx="58" cy="46" rx="5" ry="7"/><ellipse cx="58" cy="82" rx="19" ry="28"/><ellipse cx="72" cy="118" rx="8" ry="24" transform="rotate(-52 72 118)"/><ellipse cx="46" cy="122" rx="8" ry="22" transform="rotate(42 46 122)"/><ellipse cx="82" cy="72" rx="7" ry="20" transform="rotate(-65 82 72)"/><ellipse cx="40" cy="76" rx="6" ry="16" transform="rotate(28 40 76)"/></g><g fill="#d4aa7a"><ellipse cx="142" cy="28" rx="12" ry="14"/><ellipse cx="142" cy="46" rx="5" ry="7"/><ellipse cx="142" cy="82" rx="19" ry="28"/><ellipse cx="128" cy="118" rx="8" ry="24" transform="rotate(52 128 118)"/><ellipse cx="154" cy="122" rx="8" ry="22" transform="rotate(-42 154 122)"/><ellipse cx="118" cy="72" rx="7" ry="20" transform="rotate(65 118 72)"/><ellipse cx="160" cy="76" rx="6" ry="16" transform="rotate(-28 160 76)"/></g><ellipse cx="100" cy="78" rx="9" ry="6" fill="#b88070"/></svg>`
@@ -1432,6 +1640,7 @@ const KAMA_POSES = [
 ];
 
 let DECK = { truth: [], dare: [] };
+// intimate and positions draw directly from their source arrays via dedicated getters
 
 function buildDeck() {
   const m  = S.memory  || 'that night';
@@ -1491,6 +1700,24 @@ function getPrompt(type) {
   return pick.p.text;
 }
 
+function getIntimatePrompt() {
+  const used = S.intimatesUsed || (S.intimatesUsed = []);
+  let avail = INTIMATE_DECK.map((_, i) => i).filter(i => !used.includes(i));
+  if (avail.length === 0) { S.intimatesUsed = []; avail = INTIMATE_DECK.map((_, i) => i); toast('Deck reshuffled 🔄'); }
+  const idx = avail[Math.floor(Math.random() * avail.length)];
+  used.push(idx);
+  return INTIMATE_DECK[idx];
+}
+
+function getPositionsPrompt() {
+  const used = S.positionsUsed || (S.positionsUsed = []);
+  let avail = POSITIONS_DECK.map((_, i) => i).filter(i => !used.includes(i));
+  if (avail.length === 0) { S.positionsUsed = []; avail = POSITIONS_DECK.map((_, i) => i); toast('Deck reshuffled 🔄'); }
+  const idx = avail[Math.floor(Math.random() * avail.length)];
+  used.push(idx);
+  return POSITIONS_DECK[idx];
+}
+
 /* ═══════════════════════════════════════════════════════════
    SCREEN NAVIGATION
 ═══════════════════════════════════════════════════════════ */
@@ -1546,9 +1773,15 @@ function enterGameScreen() {
 
 function updateTurnUI() {
   const name = S.currentPlayer === 0 ? S.p1 : S.p2;
-  document.getElementById('turn-name').textContent = name + "’s Turn";
+  document.getElementById('turn-name').textContent = name + "'s Turn";
   document.getElementById('turn-sub').textContent  = 'Choose your fate';
   renderPips();
+
+  const showIntimate  = S.heatLevel >= 50;
+  const showPositions = S.heatLevel >= 75 && G.positionsEnabled;
+  document.getElementById('btn-intimate').style.display  = showIntimate  ? '' : 'none';
+  document.getElementById('btn-positions').style.display = showPositions ? '' : 'none';
+  document.getElementById('choice-sub-row').style.display = (showIntimate || showPositions) ? 'flex' : 'none';
 }
 
 function renderPips() {
@@ -1578,6 +1811,8 @@ function resetCard() {
   document.getElementById('choice-row').style.display = 'flex';
   document.getElementById('action-row').classList.remove('visible');
   document.getElementById('btn-skip').disabled = S.skips[S.currentPlayer] <= 0;
+  document.getElementById('btn-skip').style.display = '';
+  document.getElementById('btn-free-skip').style.display = 'none';
   document.getElementById('btn-done').textContent = 'Done ✓';
   document.getElementById('btn-forfeit').style.opacity = '1';
   document.getElementById('btn-forfeit').style.pointerEvents = 'auto';
@@ -1672,7 +1907,8 @@ function choosePrompt(type) {
   prompt.textContent = '';
   prompt.innerHTML   = '';
 
-  document.getElementById('choice-row').style.display  = 'none';
+  document.getElementById('choice-row').style.display = 'none';
+  document.getElementById('choice-sub-row').style.display = 'none';
   document.getElementById('card-front-hint').textContent =
     type === 'truth' ? 'A truth awaits…' : 'A dare awaits…';
 
@@ -1713,7 +1949,8 @@ function doDoubleDare() {
   label.textContent = '✶ Double ✶';
   prompt.innerHTML  = '';
 
-  document.getElementById('choice-row').style.display  = 'none';
+  document.getElementById('choice-row').style.display = 'none';
+  document.getElementById('choice-sub-row').style.display = 'none';
   document.getElementById('card-front-hint').textContent = 'Double dare…';
 
   const card = document.getElementById('game-card');
@@ -1739,6 +1976,98 @@ function doDoubleDare() {
       document.getElementById('btn-forfeit').style.pointerEvents = 'none';
     }, 830);
   }, 1400);
+}
+
+function doIntimate() {
+  if (_revealing) return;
+  _revealing = true;
+  _currentType = 'intimate';
+
+  const text  = getIntimatePrompt();
+  const back  = document.getElementById('card-back');
+  const label = document.getElementById('card-type-label');
+  const prompt = document.getElementById('card-prompt');
+
+  back.className    = 'card-face card-back intimate';
+  label.textContent = '— Intimate —';
+  prompt.textContent = '';
+  prompt.innerHTML  = '';
+
+  document.getElementById('choice-row').style.display = 'none';
+  document.getElementById('choice-sub-row').style.display = 'none';
+  document.getElementById('card-front-hint').textContent = 'Something intimate awaits…';
+
+  const card = document.getElementById('game-card');
+  card.classList.add('anticipating');
+  if (navigator.vibrate) navigator.vibrate([8, 90, 8, 90, 8]);
+  playHeartbeat();
+
+  setTimeout(() => {
+    card.classList.remove('anticipating');
+    card.classList.add('flipped');
+    playWhisper();
+    setTimeout(() => {
+      typewriter(prompt, text, 36, () => {
+        _revealing = false;
+        document.getElementById('action-row').classList.add('visible');
+        document.getElementById('btn-skip').disabled = S.skips[S.currentPlayer] <= 0;
+        document.getElementById('btn-skip').style.display = '';
+        document.getElementById('btn-free-skip').style.display = 'none';
+      });
+    }, 830);
+  }, 1400);
+}
+
+function doPositions() {
+  if (_revealing) return;
+  _revealing = true;
+  _currentType = 'positions';
+
+  const pose  = getPositionsPrompt();
+  const back  = document.getElementById('card-back');
+  const label = document.getElementById('card-type-label');
+  const prompt = document.getElementById('card-prompt');
+
+  back.className    = 'card-face card-back positions';
+  label.textContent = '— Position —';
+  prompt.innerHTML  = '';
+
+  document.getElementById('choice-row').style.display = 'none';
+  document.getElementById('choice-sub-row').style.display = 'none';
+  document.getElementById('card-front-hint').textContent = 'Something deeper awaits…';
+
+  const card = document.getElementById('game-card');
+  card.classList.add('anticipating');
+  if (navigator.vibrate) navigator.vibrate([8, 90, 8, 90, 8]);
+  playHeartbeat();
+
+  setTimeout(() => {
+    card.classList.remove('anticipating');
+    card.classList.add('flipped');
+    playWhisper();
+    setTimeout(() => {
+      _revealing = false;
+      prompt.innerHTML =
+        '<span class="pos-name">' + pose.name + '</span>' +
+        '<span class="pos-desc">' + pose.desc + '</span>';
+      document.getElementById('action-row').classList.add('visible');
+      document.getElementById('btn-skip').style.display = 'none';
+      document.getElementById('btn-free-skip').style.display = '';
+      document.getElementById('btn-forfeit').style.opacity = '0';
+      document.getElementById('btn-forfeit').style.pointerEvents = 'none';
+    }, 830);
+  }, 1400);
+}
+
+function doFreeSkip() {
+  stopDareTimer();
+  clearInterval(_typewriterTimer);
+  S.round++;
+  S.currentPlayer = 1 - S.currentPlayer;
+  saveState();
+  if (navigator.vibrate) navigator.vibrate([10, 20]);
+  toast('Skipped freely — no penalty');
+  resetCard(); updateTurnUI();
 }
 
 function doDone() {
@@ -1805,7 +2134,12 @@ function doSkip() {
   stopDareTimer();
   clearInterval(_typewriterTimer);
 
-  const text   = getPrompt(_currentType);
+  let text;
+  if (_currentType === 'intimate') {
+    text = getIntimatePrompt();
+  } else {
+    text = getPrompt(_currentType);
+  }
   const prompt = document.getElementById('card-prompt');
   prompt.textContent = '';
   prompt.innerHTML   = '';
@@ -1959,8 +2293,10 @@ function checkHeatMilestones() {
       } else {
         const msgs = {
           25: 'Warming up… 🌡️',
-          50: 'Halfway there. Getting hot 🔥',
-          75: 'The heat is peaking — new cards unlocked 🔥🔥',
+          50: 'Getting hot — Intimate cards unlocked 🔥',
+          75: G.positionsEnabled
+            ? 'Scorching — Positions deck now in play 🔥🔥'
+            : 'The heat is peaking 🔥🔥',
         };
         toast(msgs[thr]);
         playChime();
@@ -2383,6 +2719,39 @@ function dismissReaction() {
 }
 
 /* ═══════════════════════════════════════════════════════════
+   POSITIONS DECK CONSENT + TOGGLE
+═══════════════════════════════════════════════════════════ */
+function togglePositionsEnabled() {
+  const btn = document.getElementById('btn-positions-toggle');
+  if (!G.positionsEnabled) {
+    if (!localStorage.getItem('rp_positions_consented')) {
+      document.getElementById('consent-modal').classList.add('show');
+      return;
+    }
+    G.positionsEnabled = true;
+    btn.classList.add('on');
+    btn.setAttribute('aria-pressed', 'true');
+  } else {
+    G.positionsEnabled = false;
+    btn.classList.remove('on');
+    btn.setAttribute('aria-pressed', 'false');
+  }
+}
+
+function confirmPositionsConsent() {
+  localStorage.setItem('rp_positions_consented', '1');
+  G.positionsEnabled = true;
+  const btn = document.getElementById('btn-positions-toggle');
+  btn.classList.add('on');
+  btn.setAttribute('aria-pressed', 'true');
+  document.getElementById('consent-modal').classList.remove('show');
+}
+
+function cancelPositionsConsent() {
+  document.getElementById('consent-modal').classList.remove('show');
+}
+
+/* ═══════════════════════════════════════════════════════════
    KAMA POPUP — intimate pose gallery between turns
 ═══════════════════════════════════════════════════════════ */
 let _kamaTimer    = null;
@@ -2420,6 +2789,19 @@ function dismissKamaPopup() {
   if (cb) setTimeout(cb, 420);
 }
 </script>
+
+<!-- ── CONSENT MODAL ── -->
+<div id="consent-modal">
+  <div id="consent-sheet">
+    <div class="consent-ornament">✦</div>
+    <p class="consent-q">Both of you good with this?</p>
+    <p class="consent-sub">Tap yes only if you've talked about it.</p>
+    <div class="consent-btns">
+      <button class="btn btn-gold" onclick="confirmPositionsConsent()">Yes, we're in</button>
+      <button class="btn btn-ghost" onclick="cancelPositionsConsent()">Not yet</button>
+    </div>
+  </div>
+</div>
 
 <!-- ── KAMA POPUP ── -->
 <div id="kama-overlay" onclick="if(event.target===this)dismissKamaPopup()">
